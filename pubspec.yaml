@@ -1,0 +1,137 @@
+name: cnn_knn_app
+description: A new Flutter project.
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.2 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  equatable: ^2.0.5
+  dartz: ^0.10.1
+  dio: ^5.1.1
+  internet_connection_checker: ^1.0.0+1
+  hive_flutter: ^1.1.0
+  get: ^4.6.5
+  get_it: ^7.4.1
+  flutter_bloc: ^8.1.2
+  get_time_ago: ^1.2.5
+  url_launcher: ^6.1.10
+  flutter_launcher_icons: ^0.13.1
+  permission_handler: ^10.2.0
+  change_app_package_name: ^1.1.0
+  flutter_screenutil: ^5.7.0
+  google_fonts: ^4.0.4
+  mockito: ^5.4.0
+  bloc_test: ^9.1.1
+  currency_formatter: ^2.0.1
+  fade_shimmer: ^2.2.0
+  cached_network_image: ^3.2.3
+  bloc_concurrency: ^0.2.2
+  lottie: ^2.4.0
+  nested: ^1.0.0
+  onscreen_num_keyboard: ^1.0.4
+  mocktail: ^0.3.0
+  flutter_spinkit: ^5.2.0
+  logger: ^1.4.0
+  formz: ^0.4.0
+  newsfeed_multiple_imageview:
+  easy_localization: ^3.0.3
+
+  form_inputs:
+    path: packages/form_inputs
+
+dev_dependencies:
+  build_runner: ^2.3.3 
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/anims/
+    - assets/lotties/
+    - assets/fonts/futura/
+    - assets/fonts/futura/
+    - assets/fonts/poppins/
+
+  fonts:
+    - family: Futura
+      fonts:
+        - asset: assets/fonts/futura/Futura-Book-font.ttf
+        - asset: assets/fonts/futura/Futura-Book-Italic-font.ttf
+        - asset: assets/fonts/futura/Futura-Heavy-font.ttf
+        - asset: assets/fonts/futura/Futura-Heavy-Italic-font.ttf
+        - asset: assets/fonts/futura/futura-light-bt.ttf
+        - asset: assets/fonts/futura/Futura-Light-font.ttf
+        - asset: assets/fonts/futura/Futura-Light-Italic-font.ttf
+        - asset: assets/fonts/futura/futura-medium-bt.ttf
+        - asset: assets/fonts/futura/Futura-Medium-Italic-font.ttf
+
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins/Poppins-ExtraLight-Italic.ttf
+        - asset: assets/fonts/poppins/Poppins-ExtraLight.ttf
+        - asset: assets/fonts/poppins/Poppins-Italic-400.ttf
+        - asset: assets/fonts/poppins/Poppins-Italic-400.ttf
+        - asset: assets/fonts/poppins/Poppins-Light-300.ttf
+        - asset: assets/fonts/poppins/Poppins-Light-Italic-300.ttf
+        - asset: assets/fonts/poppins/Poppins-Medium-500.ttf
+        - asset: assets/fonts/poppins/Poppins-Medium-Italic-500.ttf
+        - asset: assets/fonts/poppins/Poppins-Regular-400.ttf
+#flutter_icons:
+#  android: "launcher_icon"
+#  ios: true
+#  image_path: "assets/logo/logo.png"
+#  min_sdk_android: 21 # android min sdk min:16, default 21
+#  windows:
+#    generate: true
+#    image_path: "assets/logo/logo.png"
+#    icon_size: 48 # min:48, max:256, default: 48
+
+#flutter_native_splash:
+#  color: "#ffffff"
+#  image: assets/laucher/okohi_white.png
+#  android_12:
+#    image: assets/laucher/okohi_android12.png
+
+# Splash screen background color.
+#    color: "#ffffff"
+
+# App icon background color.
+#icon_background_color: "#111111"
+#  android: true
+#  ios: true
+#  web: false
+#  android_gravity: center
+#  ios_content_mode: center
+#  fullscreen: true
+
+###### flutter pub run flutter_launcher_icons:main
+###### flutter pub run flutter_native_splash:create && flutter pub run flutter_launcher_icons:main
+###### flutter pub run change_app_package_name:main com.new.package.name
