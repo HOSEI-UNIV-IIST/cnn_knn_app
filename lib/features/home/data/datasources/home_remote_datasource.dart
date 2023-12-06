@@ -27,7 +27,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
         "file": await MultipartFile.fromFile(
           file.path,
           filename: fileName,
-          contentType: MediaType("image", "jpeg"),
+          contentType: MediaType("image", "jpg"),
         ),
       });
 
@@ -40,8 +40,8 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
 
       PredictionDataModel predctionModel =
           AppDefaultModel.defaultPredictionDataModel;
-
-      predctionModel = predictionDataModelFromJson(response.data);
+      print(response.data.runtimeType);
+      predctionModel = PredictionDataModel.fromJson(response.data);
       predctionModel = predctionModel.copyWith(
           headerData: HeaderData(code: statusCode, message: statusMessage));
 

@@ -6,10 +6,9 @@ abstract class HomeEvent extends Equatable {
 }
 
 class PostPredictionEvent extends HomeEvent {
-  final File payload;
-  PostPredictionEvent(this.payload);
+  PostPredictionEvent();
   @override
-  List<Object?> get props => [payload];
+  List<Object?> get props => [];
 }
 
 class PickImageEvent extends HomeEvent {

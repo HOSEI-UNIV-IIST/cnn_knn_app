@@ -40,7 +40,7 @@ class PredictionDataModel extends Equatable {
 
   factory PredictionDataModel.fromJson(Map<String, dynamic> json) =>
       PredictionDataModel(
-        headerData: HeaderData.fromJson(json["header_data"]),
+        headerData: const HeaderData(code: 404, message: ''),
         cnnResult: CnnResult.fromJson(json["cnn_result"]),
         knnResult: KnnResult.fromJson(json["knn_result"]),
       );
@@ -74,8 +74,8 @@ class HeaderData extends HeaderDataEntity {
       );
 
   factory HeaderData.fromJson(Map<String, dynamic> json) => HeaderData(
-        code: json["code"],
-        message: json["message"],
+        code: json["code"] ?? '',
+        message: json["message"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
