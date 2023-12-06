@@ -1,0 +1,47 @@
+{
+  "cnn_result": {
+    "Class_1": "2",
+    "Score_1": "0.9999998807907104",
+    "Probability_1": "0.5761168599128723",
+    "Class_2": "0",
+    "Score_2": "9.5021114532301e-08",
+    "Probability_2": "0.21194159984588623",
+    "Class_3": "1",
+    "Score_3": "7.855858420682436e-16",
+    "Probability_3": "0.21194157004356384"
+  },
+  "knn_result": {
+    "DistanceThreshold": 800.9991632055569,
+    "ProbaClass": 55.77726364135742,
+    "SimilarImages": [
+      {
+        "name": "Shoes/Shoes_2930.jpg",
+        "title": "SUADEX Steel Toe Boots for Men Women Waterproof Construction Boots Work Safety Boots Indestructible Shoes Lightweight Comfortable Fashion 6\"",
+        "image": "https://m.media-amazon.com/images/I/71JLVrFE3gL._AC_UL320_.jpg",
+        "price": 54.99,
+        "label": 2
+      },
+      {
+        "name": "Shoes/Shoes_3401.jpg",
+        "title": "Bates Women's Rallyforce Tall Zip Military and Tactical Boot",
+        "image": "https://m.media-amazon.com/images/I/717wgU2lElL._AC_UL320_.jpg",
+        "price": 119.95,
+        "label": 2
+      },
+      {
+        "name": "Shoes/Shoes_3706.jpg",
+        "title": "ARIAT Women's WMS Treadfast 6\" H2o St Drk BRN Fire and Safety Boot",
+        "image": "https://m.media-amazon.com/images/I/71+c4N+9-wL._AC_UL320_.jpg",
+        "price": 124.95,
+        "label": 2
+      },
+      {
+        "name": "Shoes/Shoes_3511.jpg",
+        "title": "CAT Women's Dryverse 6\" Waterproof Steel Toe Construction Boot",
+        "image": "https://m.media-amazon.com/images/I/91GOrtixzrL._AC_UL320_.jpg",
+        "price": 111.99,
+        "label": 2
+      }
+    ]
+  }
+}
