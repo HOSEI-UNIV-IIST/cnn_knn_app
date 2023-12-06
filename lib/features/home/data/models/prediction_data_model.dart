@@ -17,36 +17,71 @@ String predictionDataModelToJson(PredictionDataModel data) =>
     json.encode(data.toJson());
 
 class PredictionDataModel extends Equatable {
+  final HeaderData headerData;
   final CnnResult cnnResult;
   final KnnResult knnResult;
 
   const PredictionDataModel({
+    required this.headerData,
     required this.cnnResult,
     required this.knnResult,
   });
 
   PredictionDataModel copyWith({
+    HeaderData? headerData,
     CnnResult? cnnResult,
     KnnResult? knnResult,
   }) =>
       PredictionDataModel(
+        headerData: headerData ?? this.headerData,
         cnnResult: cnnResult ?? this.cnnResult,
         knnResult: knnResult ?? this.knnResult,
       );
 
   factory PredictionDataModel.fromJson(Map<String, dynamic> json) =>
       PredictionDataModel(
+        headerData: HeaderData.fromJson(json["header_data"]),
         cnnResult: CnnResult.fromJson(json["cnn_result"]),
         knnResult: KnnResult.fromJson(json["knn_result"]),
       );
 
   Map<String, dynamic> toJson() => {
+        "header_data": headerData.toJson(),
         "cnn_result": cnnResult.toJson(),
         "knn_result": knnResult.toJson(),
       };
 
   @override
-  List<Object?> get props => [cnnResult, knnResult];
+  List<Object?> get props => [headerData, cnnResult, knnResult];
+}
+
+class HeaderData extends HeaderDataEntity {
+  final int code;
+  final String message;
+
+  const HeaderData({
+    required this.code,
+    required this.message,
+  }) : super(code: code, message: message);
+
+  HeaderData copyWith({
+    int? code,
+    String? message,
+  }) =>
+      HeaderData(
+        code: code ?? this.code,
+        message: message ?? this.message,
+      );
+
+  factory HeaderData.fromJson(Map<String, dynamic> json) => HeaderData(
+        code: json["code"],
+        message: json["message"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "code": code,
+        "message": message,
+      };
 }
 
 class CnnResult extends CnnResultEntity {

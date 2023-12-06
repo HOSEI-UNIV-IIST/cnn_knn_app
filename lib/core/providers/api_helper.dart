@@ -239,7 +239,7 @@ class APIHelper {
       onSendProgress}) async {
     try {
       _getApiClient(headers: headers);
-      final response = await dio.post(url, data: body,
+      final Response response = await dio.post(url, data: body,
           onSendProgress: (int sent, int total) {
         if (kDebugMode) {
           print("$sent $total");

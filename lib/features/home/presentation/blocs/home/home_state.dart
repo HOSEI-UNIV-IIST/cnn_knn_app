@@ -1,24 +1,42 @@
 part of 'home_bloc.dart';
 
 class HomeState extends Equatable {
-  final HomePageStatus homePageStatus;
-  final int homePageIndex;
+  final BlocStatus postPredictionStatus;
+  final BlocStatus pickImageStatus;
+  final File? selectedImage;
+  final String message;
   const HomeState({
-    //this.homePageStatus = HomePageStatus.home,
-    this.homePageStatus = HomePageStatus.information,
-    //this.homePageIndex = AppIndexes.bottomBarHome,
-    this.homePageIndex = AppIndexes.bottomBarInformation,
+    this.postPredictionStatus = BlocStatus.initial,
+    this.pickImageStatus = BlocStatus.initial,
+    this.selectedImage,
+    this.message = '',
   });
-  HomeState copyWith(HomePageStatus? status, int? index) =>
+  HomeState copyWith({
+    BlocStatus? postPredictionStatus,
+    BlocStatus? pickImageStatus,
+    File? selectedImage,
+    String? message,
+  }) =>
       HomeState(
-          homePageStatus: status ?? homePageStatus,
-          homePageIndex: index ?? homePageIndex);
+        postPredictionStatus: postPredictionStatus ?? this.postPredictionStatus,
+        pickImageStatus: pickImageStatus ?? this.pickImageStatus,
+        selectedImage: selectedImage ?? this.selectedImage,
+        message: message ?? this.message,
+      );
 
   @override
-  List<Object?> get props => [homePageStatus, homePageIndex];
+  List<Object?> get props =>
+      [postPredictionStatus, pickImageStatus, selectedImage, message];
 
   @override
   String toString() {
-    return '''HomeState { homePageStatus: $homePageStatus, homePageIndex: $homePageIndex}''';
+    return '''
+      HomeState {
+        postPredictionStatus: $postPredictionStatus,
+        pickImageStatus: $pickImageStatus,
+        selectedImage: $selectedImage,
+        message: $message,
+        }
+     ''';
   }
 }

@@ -5,10 +5,16 @@ abstract class HomeEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class ChangeHomeEvent extends HomeEvent {
-  final int index;
-  ChangeHomeEvent(this.index);
-
+class PostPredictionEvent extends HomeEvent {
+  final File payload;
+  PostPredictionEvent(this.payload);
   @override
-  List<Object?> get props => [index];
+  List<Object?> get props => [payload];
+}
+
+class PickImageEvent extends HomeEvent {
+  final bool sourceGallery;
+  PickImageEvent(this.sourceGallery);
+  @override
+  List<Object?> get props => [sourceGallery];
 }
