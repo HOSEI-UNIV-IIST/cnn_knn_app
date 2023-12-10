@@ -11,10 +11,7 @@ class AppDefaultModel {
                   probability1: '',
                   class2: '',
                   score2: '',
-                  probability2: '',
-                  class3: '',
-                  score3: '',
-                  probability3: ''),
+                  probability2: ''),
           knnResult: KnnResult(
               distanceThreshold: 0, probaClass: 0, similarImages: []));
 }

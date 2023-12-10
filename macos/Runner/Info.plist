@@ -16,6 +16,14 @@
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+
+
+	<key>NSCameraUsageDescription</key>
+	<string>Used for Image prediction</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Used for Image prediction</string>
+
+	
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleVersion</key>

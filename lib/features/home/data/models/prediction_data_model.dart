@@ -91,9 +91,6 @@ class CnnResult extends CnnResultEntity {
   final String class2;
   final String score2;
   final String probability2;
-  final String class3;
-  final String score3;
-  final String probability3;
 
   const CnnResult({
     required this.class1,
@@ -101,20 +98,14 @@ class CnnResult extends CnnResultEntity {
     required this.probability1,
     required this.class2,
     required this.score2,
-    required this.probability2,
-    required this.class3,
-    required this.score3,
-    required this.probability3,
+    required this.probability2
   }) : super(
             class1: class1,
             score1: score1,
             probability1: probability1,
             class2: class2,
             score2: score2,
-            probability2: probability2,
-            class3: class3,
-            score3: score3,
-            probability3: probability3);
+            probability2: probability2);
 
   CnnResult copyWith({
     String? class1,
@@ -122,10 +113,7 @@ class CnnResult extends CnnResultEntity {
     String? probability1,
     String? class2,
     String? score2,
-    String? probability2,
-    String? class3,
-    String? score3,
-    String? probability3,
+    String? probability2
   }) =>
       CnnResult(
         class1: class1 ?? this.class1,
@@ -133,10 +121,7 @@ class CnnResult extends CnnResultEntity {
         probability1: probability1 ?? this.probability1,
         class2: class2 ?? this.class2,
         score2: score2 ?? this.score2,
-        probability2: probability2 ?? this.probability2,
-        class3: class3 ?? this.class3,
-        score3: score3 ?? this.score3,
-        probability3: probability3 ?? this.probability3,
+        probability2: probability2 ?? this.probability2
       );
 
   factory CnnResult.fromJson(Map<String, dynamic> json) => CnnResult(
@@ -145,10 +130,7 @@ class CnnResult extends CnnResultEntity {
         probability1: json["Probability_1"],
         class2: json["Class_2"],
         score2: json["Score_2"],
-        probability2: json["Probability_2"],
-        class3: json["Class_3"],
-        score3: json["Score_3"],
-        probability3: json["Probability_3"],
+        probability2: json["Probability_2"]
       );
 
   Map<String, dynamic> toJson() => {
@@ -157,10 +139,7 @@ class CnnResult extends CnnResultEntity {
         "Probability_1": probability1,
         "Class_2": class2,
         "Score_2": score2,
-        "Probability_2": probability2,
-        "Class_3": class3,
-        "Score_3": score3,
-        "Probability_3": probability3,
+        "Probability_2": probability2
       };
 }
 

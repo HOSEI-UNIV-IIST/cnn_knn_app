@@ -25,7 +25,8 @@ class HomePage extends StatelessWidget {
               // mainAxisAlignment: MainAxisAlignment.center,
               // mainAxisSize: MainAxisSize.min,
               children: [
-                if (pickedImage != null) Image.file(pickedImage),
+                if (pickedImage != null)
+                  SizedBox(height: 250.sp, child: Image.file(pickedImage)),
                 Divider(),
                 Center(
                   child: state.pickImageStatus == BlocStatus.progress
@@ -58,48 +59,60 @@ class HomePage extends StatelessWidget {
                         ),
                 ),
                 state.postPredictionStatus == BlocStatus.success
-                    ? Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 16.sp, vertical: 8.sp),
-                        child: Card(
-                          color: AppThemeMode.of(context).line,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Classe: ${state.predictionData!.cnnResult.class1}',
-                                style: AppThemeMode.of(context)
-                                    .title1
-                                    .copyWith(fontSize: 22.sp),
+                    ? state.predictionData!.knnResult.distanceThreshold < 800
+                        ? Center(
+                            child: Text(
+                              "Sorry, cannot determine the category of this image!",
+                              maxLines: 3,
+                              textAlign: TextAlign.center,
+                              style: AppThemeMode.of(context).title1.copyWith(
+                                  fontSize: 32.sp,
+                                  fontWeight: FontWeight.w900,
+                                  color: AppThemeMode.of(context).deepRed),
+                            ),
+                          )
+                        : Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16.sp, vertical: 8.sp),
+                            child: Card(
+                              color: AppThemeMode.of(context).line,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Classe: ${state.predictionData!.cnnResult.class1 == '0' ? 'Office Chair' : 'Laptop'}',
+                                    style: AppThemeMode.of(context)
+                                        .title1
+                                        .copyWith(fontSize: 22.sp),
+                                  ),
+                                  Text(
+                                    "Probability: ${(double.parse(state.predictionData!.cnnResult.probability1) * 100).toStringAsFixed(2)}%",
+                                    style: AppThemeMode.of(context)
+                                        .title1
+                                        .copyWith(fontSize: 22.sp),
+                                  ),
+                                  // Text(
+                                  //   'Score: ${double.parse(state.predictionData!.cnnResult.score1).toStringAsFixed(2)}',
+                                  //   style: AppThemeMode.of(context)
+                                  //       .title1
+                                  //       .copyWith(fontSize: 22.sp),
+                                  // ),
+                                  Text(
+                                    'Distance Threshold: ${state.predictionData!.knnResult.distanceThreshold.toStringAsFixed(2)}',
+                                    style: AppThemeMode.of(context)
+                                        .title1
+                                        .copyWith(fontSize: 22.sp),
+                                  ),
+                                  // Text(
+                                  //   'Proba Class: ${state.predictionData!.knnResult.probaClass.toStringAsFixed(2)}',
+                                  //   style: AppThemeMode.of(context)
+                                  //       .title1
+                                  //       .copyWith(fontSize: 22.sp),
+                                  // ),
+                                ],
                               ),
-                              Text(
-                                "Proba: ${double.parse(state.predictionData!.cnnResult.probability1).toStringAsFixed(2)}",
-                                style: AppThemeMode.of(context)
-                                    .title1
-                                    .copyWith(fontSize: 22.sp),
-                              ),
-                              Text(
-                                'Score: ${double.parse(state.predictionData!.cnnResult.score1).toStringAsFixed(2)}',
-                                style: AppThemeMode.of(context)
-                                    .title1
-                                    .copyWith(fontSize: 22.sp),
-                              ),
-                              Text(
-                                'Distance Threshold: ${state.predictionData!.knnResult.distanceThreshold.toStringAsFixed(2)}',
-                                style: AppThemeMode.of(context)
-                                    .title1
-                                    .copyWith(fontSize: 22.sp),
-                              ),
-                              Text(
-                                'Proba Class: ${state.predictionData!.knnResult.probaClass.toStringAsFixed(2)}',
-                                style: AppThemeMode.of(context)
-                                    .title1
-                                    .copyWith(fontSize: 22.sp),
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
+                            ),
+                          )
                     : const SizedBox(),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 50.sp),
@@ -109,29 +122,36 @@ class HomePage extends StatelessWidget {
                         shrinkWrap: true,
                         children: [
                           if (state.predictionData != null)
-                            for (SimilarImage item in state
-                                .predictionData!.knnResult.similarImages)
-                              Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                        height: 250.sp,
-                                        // width: 200.sp,
-                                        child: Image.network(item.image)),
-                                    Text(
-                                      'Price: ${item.price} yen',
-                                      style: AppThemeMode.of(context)
-                                          .title1
-                                          .copyWith(
-                                              fontSize: 22.sp,
-                                              fontWeight: FontWeight.w900,
-                                              color: AppThemeMode.of(context)
-                                                  .blue),
+                            if (state.predictionData?.knnResult != null &&
+                                state.predictionData!.knnResult.similarImages
+                                    .isNotEmpty)
+                              for (SimilarImage item in state
+                                  .predictionData!.knnResult.similarImages)
+                                if (item.label.toString() ==
+                                    state.predictionData!.cnnResult.class1
+                                        .toString())
+                                  Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                            height: 250.sp,
+                                            // width: 200.sp,
+                                            child: Image.network(item.image)),
+                                        Text(
+                                          'Price: ${item.price} yen',
+                                          style: AppThemeMode.of(context)
+                                              .title1
+                                              .copyWith(
+                                                  fontSize: 22.sp,
+                                                  fontWeight: FontWeight.w900,
+                                                  color:
+                                                      AppThemeMode.of(context)
+                                                          .blue),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                              ),
+                                  ),
                         ],
                       )),
                 ),

@@ -7,9 +7,6 @@ class CnnResultEntity extends Equatable {
   final String class2;
   final String score2;
   final String probability2;
-  final String class3;
-  final String score3;
-  final String probability3;
 
   const CnnResultEntity({
     required this.class1,
@@ -17,10 +14,7 @@ class CnnResultEntity extends Equatable {
     required this.probability1,
     required this.class2,
     required this.score2,
-    required this.probability2,
-    required this.class3,
-    required this.score3,
-    required this.probability3,
+    required this.probability2
   });
 
   @override
@@ -30,9 +24,6 @@ class CnnResultEntity extends Equatable {
         probability1,
         class2,
         score2,
-        probability2,
-        class3,
-        score3,
-        probability3
+        probability2
       ];
 }
